@@ -1,0 +1,26 @@
+syntax="proto3";
+package proto;
+option go_package="./Proto";
+import "google/api/annotations.proto";
+service TagService{
+  rpc GetTageList (GetTaglistReques)returns (GetTagReply){
+    option (google.api.http) = {
+      get: "/api/weather"
+    };
+  }
+}
+message GetTaglistReques {
+  string name = 1;
+  uint32 state = 2;
+}
+message Tag{
+  string province=1;
+  string city=2;
+  string weather=3;
+  string reporttime=4;
+}
+message  GetTagReply{
+  repeated Tag lives =1;
+  string status=2;
+  string  info=3;
+}
